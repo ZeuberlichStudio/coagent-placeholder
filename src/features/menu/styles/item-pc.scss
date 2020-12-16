@@ -1,0 +1,63 @@
+@media screen and (min-width: 1024px) {
+    .menu-item {
+        width: max-content;
+        padding: get-vw(16px);
+
+        display: flex;
+        flex-direction: column;
+
+        border-radius: get-vw(12px);
+        overflow: hidden;
+        cursor: pointer;
+
+        //default state
+        color: $red;
+        box-shadow: 0 0 0 rgba(0,0,0,0);
+        background-color: rgba(0,0,0,0);
+        transition: .4s;
+
+        h3 {
+            margin-left: get-vw(-4px);
+            @include montserrat-regular(get-vw(43px), get-vw(43px));
+            letter-spacing: get-vw(4.8px);
+        }
+
+        hr {
+            height: get-vw(2px);
+            margin: get-vw(6px) 0;
+            display: block;
+            background-color: $blue;
+
+            //default state
+            width: 0%;
+            transition: .4s;
+        }
+
+        span {
+            width: max-content;
+            margin-top: get-vw(0px);
+            margin-bottom: get-vw(-8px);
+            @include montserrat-medium(get-vw(22px), get-vw(22px));
+            letter-spacing: get-vw(.4px);
+            display: block;
+            //default state
+            transform: translateX(-110%);
+            transition-property: transform;
+            transition-duration: .4s;
+        }
+
+        &:last-child span { max-width: get-vw(358px); }
+    }
+
+    .menu-item:hover {
+        color: $blue;
+        box-shadow: 0 get-vw(1.5px) get-vw(6px) rgba( $red, .25 );
+        background-color: rgba($white, .75);
+
+        hr { width: 100% }
+        span { 
+            transform: translateY(0%);
+            opacity: 1; 
+        }
+    }
+}

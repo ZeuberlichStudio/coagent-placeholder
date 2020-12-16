@@ -1,0 +1,36 @@
+@media screen and (min-width: 1024px) {
+    html, body {
+        background-color: $white;
+    }
+
+    main {
+        margin-top: get-vw(38px);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .text-container {
+            width: max-content;
+            margin-top: get-vw(48px);
+
+            h2 {
+                @include montserrat-regular(get-vw(38px), get-vw(38px));
+                letter-spacing: get-vw(4.8px);
+                text-align: center;
+                color: $red;
+            }
+        }
+    }
+
+    footer {
+        margin-top: get-vw(44px);
+    }
+
+    aside {
+        padding-left: get-vw(44px);
+        left: 0; top: get-vw(346px);
+        position: absolute;
+        z-index: 5;
+    }
+}

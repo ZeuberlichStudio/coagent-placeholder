@@ -1,0 +1,61 @@
+@media screen and (max-width: 1023.75px) {
+    .menu-item {
+        width: max-content;
+        padding: m-get-vw(8px);
+
+        display: flex;
+        flex-direction: column;
+
+        border-radius: m-get-vw(8px);
+        overflow: hidden;
+        cursor: pointer;
+
+        //default state
+        color: $red;
+        box-shadow: 0 0 0 rgba(0,0,0,0);
+        background-color: rgba(0,0,0,0);
+        transition: .4s;
+
+        h3 {
+            @include montserrat-regular(m-get-vw(26px), m-get-vw(26px));
+            letter-spacing: m-get-vw(2.6px);
+        }
+
+        hr {
+            height: m-get-vw(1.5px);
+            margin: m-get-vw(4px) 0;
+            display: block;
+            background-color: $blue;
+
+            //default state
+            width: 0%;
+            transition: .4s;
+        }
+
+        span {
+            width: max-content;
+            margin-top: m-get-vw(2px);
+            @include montserrat-medium(m-get-vw(16px), m-get-vw(16px));
+            letter-spacing: m-get-vw(.3px);
+
+            //default state
+            transform: translateX(-110%);
+            transition-property: transform;
+            transition-duration: .4s;
+        }
+
+        &:last-child span { max-width: m-get-vw(262px); }
+    }
+
+    .menu-item:hover {
+        color: $blue;
+        box-shadow: 0 m-get-vw(1.5px) m-get-vw(6px) rgba( $red, .25 );
+        background-color: rgba($white, .75);
+
+        hr { width: 100% }
+        span { 
+            transform: translateY(0%);
+            opacity: 1; 
+        }
+    }
+}

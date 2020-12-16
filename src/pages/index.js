@@ -1,22 +1,71 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import './styles/index/index-pc.scss';
+import './styles/index/index-mobile.scss';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import PlatformContext from '../context/platform';
+import Menu from '../features/menu';
+import Header from '../features/header';
+import Footer from '../features/footer';
+import Animation from '../features/animation';
+import Slider from '../features/slider';
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+const menuItems = [
+    {
+        title: 'Мультимедиа',
+        subtitle: 'Система с МТС ОС'
+    },
+    {
+        title: 'Видеорегистратор',
+        subtitle: 'С функцией облачного хранения данных'
+    },
+    {
+        title: 'Смартфон',
+        subtitle: ' Для удобного управления системами прямо с телефона'
+    }
+];
 
-export default IndexPage
+function IndexPage() {
+    const [animSegment, setAnimSegment] = React.useState(null);
+
+    function triggerAnimation(segment) {
+        setAnimSegment(segment);
+    }
+
+    const [platform, setPlatform] = React.useState(null);
+
+    function watchPlatform() {
+        function determinePlatform() {
+            if ( window.innerWidth >= 1024 ) setPlatform('pc');
+            else setPlatform('mobile');
+        }
+
+        determinePlatform();
+        window.addEventListener('resize', determinePlatform);
+        return () => window.removeEventListener('resize', determinePlatform);
+    }
+
+    React.useEffect( watchPlatform, []);
+
+    return (
+        <PlatformContext.Provider value={platform}>
+            <Header/>
+            <aside>
+                <Menu items={menuItems} triggerAnimation={triggerAnimation}/>
+            </aside>
+            <main>
+                <Animation segment={animSegment}/>
+                <div className="text-container">
+                    <h2>преимущества</h2>
+                    <Slider id="title-slider">
+                        <p>Безопасность и комфорт в управлении системами авто во время вождения</p>
+                        <p>Экономия времени и средств при использовании автомобиля</p>
+                        <p>Уникальные функции и доступ к цифровым сервисам</p>
+                    </Slider>
+                </div>
+            </main>
+            <Footer/>
+        </PlatformContext.Provider>
+    );
+}
+
+export default IndexPage;

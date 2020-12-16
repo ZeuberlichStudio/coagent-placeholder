@@ -1,0 +1,49 @@
+@media screen and (min-width: 1024px) {
+    header {
+        width: 100vw;
+        padding: 0 get-vw(68px);
+        padding-top: get-vw(22px);
+
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .logo {
+            width: get-vw(230px);
+            top: get-vw(42px);
+            left:get-vw(68px);
+            position: absolute;
+
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+
+        h1 {
+            width: max-content;
+            @include montserrat-bold(get-vw(78px), get-vw(78px));
+            letter-spacing: get-vw(3px);
+            text-align: center;
+            color: $red;
+
+            span {
+                margin-top: get-vw(13px);
+                display: block;
+                @include montserrat-regular(get-vw(42px), get-vw(42px));
+                letter-spacing: get-vw(4.8px);
+            }
+        }
+
+        h2 {
+            width: max-content;
+            @include caveat-regular(get-vw(80px), get-vw(80px));
+            letter-spacing: get-vw(.7px);
+            text-align: center;
+            color: $blue;
+            transform: rotate(-2deg);
+        }
+    }
+}

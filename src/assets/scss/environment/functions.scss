@@ -1,0 +1,11 @@
+$vw-context: 1920;
+@function get-vw($px) {
+    $vw: $px / ($vw-context / 100);
+    @return $vw / 1px * 1vw;
+}
+
+$m-vw-context: 414;
+@function m-get-vw($px) {
+    $vw: $px / ($m-vw-context / 100);
+    @return $vw / 1px * 1vw;
+}
